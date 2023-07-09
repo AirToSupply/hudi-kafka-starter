@@ -1,0 +1,17 @@
+sink:
+  conf:
+    properties.bootstrap.servers: 'bigdata06:9092,bigdata07:9092,bigdata08:9092'
+    value.format: json
+    topic: ttttt
+    properties.group.id: group-20211019
+source:
+  basePath: /hudi/rdbms
+  name: express_trc_exetcpu
+  targetPath: /express/express_trc_exetcpu/clean_tb/
+  conf:
+    read.streaming.enabled: true
+    hoodie.datasource.write.recordkey.field: id
+    write.precombine.field: id
+    read.streaming.check-interval: 10
+    table.type: COPY_ON_WRITE
+    hoodie.datasource.write.partitionpath.field: receiveTimePartition

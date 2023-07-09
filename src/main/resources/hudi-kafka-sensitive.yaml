@@ -1,0 +1,18 @@
+sensitiveColumns:
+  - road_name
+sink:
+  conf:
+    properties.bootstrap.servers: '172.16.2.120:9092'
+    value.format: json
+    topic: topic_1
+    properties.group.id: group-210519112419156
+source:
+  basePath: 'hdfs://172.16.2.120:9000'
+  name: order_transform_1_copy4_0520
+  targetPath: /hudi/rdbms/default/order_transform_1_copy4_0520/clean_tb/
+  conf:
+    read.streaming.enabled: true
+    hoodie.datasource.write.recordkey.field: id
+    read.streaming.check-interval: 10
+    table.type: COPY_ON_WRITE
+    hoodie.datasource.write.partitionpath.field: location_type

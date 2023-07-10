@@ -11,6 +11,7 @@ source:
   name: order_transform_1_copy4_0520
   targetPath: /hudi/rdbms/default/order_transform_1_copy4_0520/clean_tb/
   conf:
+    read.utc-timezone: false
     read.streaming.enabled: true
     hoodie.datasource.write.recordkey.field: id
     read.streaming.check-interval: 10

@@ -164,7 +164,6 @@ public class ProceessRunner {
         TableResult tableResult = view.executeInsert(kafkaSinkTableName);
         // wait job finish
         tableResult.getJobClient().get().getJobExecutionResult().get();
-
     }
 
 }

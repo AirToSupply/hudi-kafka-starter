@@ -47,8 +47,7 @@
     </properties>
 
     <build>
-        <!--<finalName>hudi-flink-kafka_${scala.compat.version}-${project.version}</finalName>-->
-        <finalName>hudi-flink-kafka_${hudi-flink-version}</finalName>
+        <finalName>hudi-kafka-starter_${hudi-flink-version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -59,11 +58,6 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <!--<archive>
-                        <manifest>
-                            <mainClass>com.hcdsj.connector.table.v3.StreamSqlApplication</mainClass>
-                        </manifest>
-                    </archive>-->
                 </configuration>
                 <executions>
                     <execution>

@@ -6,7 +6,7 @@
 
     <groupId>tech.odes</groupId>
     <artifactId>hudi-kafka-starter</artifactId>
-    <version>0.10</version>
+    <version>0.11</version>
 
     <name>hudi-kafka-starter</name>
     <url>https://github.com/AirToSupply/hudi-kafka-starter</url>
@@ -27,12 +27,13 @@
         <javac.target>1.8</javac.target>
         <scala.version>2.12.10</scala.version>
         <scala.compat.version>2.12</scala.compat.version>
+        <flink.binary.version>1.13</flink.binary.version>
         <flink.version>1.13.1</flink.version>
         <flink.shaded.version>13.0</flink.shaded.version>
         <jackson.version>2.12.1</jackson.version>
         <hadoop.version>2.10.1</hadoop.version>
         <redis-flink-connector.version>1.0</redis-flink-connector.version>
-        <hudi-flink-version>0.10.0</hudi-flink-version>
+        <hudi-flink-version>0.11.0</hudi-flink-version>
         <log4j.version>2.15.0</log4j.version>
         <fastjson.version>1.2.83</fastjson.version>
         <caseclassGen.version>0.7.1</caseclassGen.version>
@@ -47,8 +48,7 @@
     </properties>
 
     <build>
-        <!--<finalName>hudi-flink-kafka_${scala.compat.version}-${project.version}</finalName>-->
-        <finalName>hudi-flink-kafka_${hudi-flink-version}</finalName>
+        <finalName>hudi-kafka-starter_${hudi-flink-version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -59,11 +59,6 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <!--<archive>
-                        <manifest>
-                            <mainClass>com.hcdsj.connector.table.v3.StreamSqlApplication</mainClass>
-                        </manifest>
-                    </archive>-->
                 </configuration>
                 <executions>
                     <execution>
@@ -128,6 +123,7 @@
             </plugin>
         </plugins>
     </build>
+
 
     <dependencies>
 
@@ -351,11 +347,18 @@
             <version>${hudi-flink-version}</version>
         </dependency>-->
 
-        <dependency>
+        <!-- >= 0.10-->
+        <!--<dependency>
             <groupId>org.apache.hudi</groupId>
             <artifactId>hudi-flink-bundle_${scala.compat.version}</artifactId>
             <version>${hudi-flink-version}</version>
             <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>org.apache.hudi</groupId>
+            <artifactId>hudi-flink${flink.binary.version}-bundle_${scala.compat.version}</artifactId>
+            <version>${hudi-flink-version}</version>
+            <!--<scope>provided</scope>-->
         </dependency>
         <!-- hudi-flink -->
 
@@ -462,6 +465,8 @@
 
 
         <!-- avro -->
+        <!-- hudi-flink 0.11 not import the pom -->
+        <!--
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
@@ -472,8 +477,8 @@
                     <groupId>com.fasterxml.jackson.core</groupId>
                 </exclusion>
             </exclusions>
-            <!--<scope>compile</scope>-->
         </dependency>
+        -->
         <!-- avro -->
 
 
@@ -485,6 +490,8 @@
             <version>1.10.1</version>
         </dependency>
         -->
+        <!-- hudi-flink 0.11 not import the pom -->
+        <!--
         <dependency>
             <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-avro</artifactId>
@@ -495,8 +502,8 @@
                     <groupId>org.apache.avro</groupId>
                 </exclusion>
             </exclusions>
-            <!--<scope>test</scope>-->
         </dependency>
+        -->
         <!-- parquet -->
 
 

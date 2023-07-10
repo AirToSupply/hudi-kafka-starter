@@ -9,6 +9,7 @@ source:
   name: express_trc_exetcpu
   targetPath: /express/express_trc_exetcpu/clean_tb/
   conf:
+    read.utc-timezone: false
     read.streaming.enabled: true
     hoodie.datasource.write.recordkey.field: id
     write.precombine.field: id
